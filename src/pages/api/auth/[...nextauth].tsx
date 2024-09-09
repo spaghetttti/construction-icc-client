@@ -14,6 +14,12 @@ export let users = [
     name: 'Jone Doe',
     email: 'info@codedthemes.com',
     password: '123456'
+  },
+  {
+    id: 2,
+    name: 'sardor',
+    email: 'sardor@gmail.com',
+    password: '123456'
   }
 ];
 
@@ -67,7 +73,7 @@ export default NextAuth({
             return user.data;
           }
         } catch (e: any) {
-          const errorMessage = e?.response.data.message;
+          const errorMessage = e?.response?.data?.message;
           throw new Error(errorMessage);
         }
       }
