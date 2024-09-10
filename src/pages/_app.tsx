@@ -26,10 +26,24 @@ import { ConfigProvider } from 'contexts/ConfigContext';
 import { store } from 'store';
 import ThemeCustomization from 'themes';
 import Notistack from 'components/third-party/Notistack';
+import { Session } from 'next-auth';
 
 // types
 type LayoutProps = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
+};
+
+// Define a default session (mock data)
+const defaultSession: Session = {
+  user: {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    image: '/assets/images/users/avatar-1.png'
+  },
+  expires: '2024-12-31T23:59:59.999Z',
+  id: 'user-id-123', // Mock user id
+  provider: 'mock-provider', // Mock provider
+  tocken: 'mock-token-xyz' // Mock token
 };
 
 interface Props {
@@ -40,6 +54,8 @@ interface Props {
 export default function App({ Component, pageProps }: AppProps & Props) {
   const getLayout = Component.getLayout ?? ((page: any) => page);
 
+  const session = defaultSession;
+
   return (
     <ReduxProvider store={store}>
       <ConfigProvider>
@@ -47,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps & Props) {
           <RTLLayout>
             <Locales>
               <ScrollTop>
-                <SessionProvider session={pageProps.session} refetchInterval={0}>
+                <SessionProvider session={session} refetchInterval={0}>
                   <>
                     <Notistack>
                       <Snackbar />

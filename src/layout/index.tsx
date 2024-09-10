@@ -5,8 +5,8 @@ import { styled } from '@mui/material/styles';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 
 import MainLayout from './MainLayout';
-import AuthGuard from 'utils/route-guard/AuthGuard';
-import GuestGuard from 'utils/route-guard/GuestGuard';
+// import AuthGuard from 'utils/route-guard/AuthGuard';
+// import GuestGuard from 'utils/route-guard/GuestGuard';
 
 const Header = lazy(() => import('./Header'));
 const FooterBlock = lazy(() => import('./FooterBlock'));
@@ -55,12 +55,13 @@ export default function Layout({ variant = 'main', children }: Props) {
   }
 
   if (variant === 'auth') {
-    return <GuestGuard>{children}</GuestGuard>;
+    // return <GuestGuard>{children}</GuestGuard>;
+    return <>{children}</>;
   }
 
   return (
-    <AuthGuard>
-      <MainLayout>{children}</MainLayout>
-    </AuthGuard>
+    // <AuthGuard>
+    <MainLayout>{children}</MainLayout>
+    // </AuthGuard>
   );
 }

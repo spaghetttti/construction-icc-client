@@ -2,8 +2,9 @@ import React from 'react';
 
 // next
 import Image from 'next/image';
-import NextLink from 'next/link';
-import { useSession, signIn } from 'next-auth/react';
+// import NextLink from 'next/link';
+// import { useSession, signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 // material-ui
 import { Theme } from '@mui/material/styles';
@@ -48,7 +49,7 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
   const [checked, setChecked] = React.useState(false);
   const [capsWarning, setCapsWarning] = React.useState(false);
 
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -179,11 +180,11 @@ const AuthLogin = ({ providers, csrfToken }: any) => {
                     }
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
-                  <NextLink href={session ? '/auth/forgot-password' : '/forgot-password'} passHref>
-                    <Link variant="h6" color="text.primary">
-                      Forgot Password?
-                    </Link>
-                  </NextLink>
+                  {/* <NextLink href={session ? '/auth/forgot-password' : '/forgot-password'} passHref> */}
+                  <Link variant="h6" color="text.primary">
+                    Forgot Password?
+                  </Link>
+                  {/* </NextLink> */}
                 </Stack>
               </Grid>
               {errors.submit && (

@@ -20,7 +20,7 @@ module.exports = withTM({
     return [
       {
         source: '/',
-        destination: '/login',
+        destination: '/sample-page',
         permanent: true
       }
     ];

@@ -12,7 +12,7 @@ import { Grid, Link, Stack, Typography } from '@mui/material';
 import Layout from 'layout';
 import Page from 'components/Page';
 import AuthWrapper from 'sections/auth/AuthWrapper';
-import AuthLogin from 'sections/auth/auth-forms/AuthLogin';
+// import AuthLogin from 'sections/auth/auth-forms/AuthLogin';
 
 export default function SignIn({ providers, csrfToken }: any) {
   return (
@@ -30,7 +30,7 @@ export default function SignIn({ providers, csrfToken }: any) {
             </Stack>
           </Grid>
           <Grid item xs={12}>
-            <AuthLogin providers={providers} csrfToken={csrfToken} />
+            {/* <AuthLogin providers={providers} csrfToken={csrfToken} /> */}
           </Grid>
         </Grid>
       </AuthWrapper>
