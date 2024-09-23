@@ -4,7 +4,7 @@ export type MenuOrientation = 'vertical' | 'horizontal';
 
 export type FontFamily = `'Inter', sans-serif` | `'Poppins', sans-serif` | `'Roboto', sans-serif` | `'Public Sans', sans-serif`;
 export type PresetColor = 'default' | 'theme1' | 'theme2' | 'theme3' | 'theme4' | 'theme5' | 'theme6' | 'theme7' | 'theme8';
-export type I18n = 'en' | 'fr' | 'ro' | 'zh'; // 'en' - English, 'fr' - French, 'ro' - Romanian, 'zh' - Chinese
+export type I18n = 'en' | 'fr' | 'ro' | 'ru'; // 'en' - English, 'fr' - French, 'ro' - Romanian, 'zh' - Chinese
 
 export const LAYOUT_CONST = {
   VERTICAL_LAYOUT: 'vertical',
@@ -35,7 +35,7 @@ export type DefaultConfigProps = {
    * 'en' (default)
    * 'fr'
    * 'ro'
-   * 'zh'
+   * 'ru'
    */
   i18n: I18n;
 

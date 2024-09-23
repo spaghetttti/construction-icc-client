@@ -12,7 +12,13 @@ const MyIntlProvider: any = IntlProvider;
 
 // load locales files
 const loadLocaleData = (locale: I18n) => {
-  return import('utils/locales/en.json');
+  switch (locale) {
+    case 'ru':
+      return import('utils/locales/ru.json');
+    case 'en':
+    default:
+      return import('utils/locales/en.json');
+  }
 };
 
 // ==============================|| LOCALIZATION ||============================== //
