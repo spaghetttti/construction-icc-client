@@ -6,12 +6,13 @@ import { useDispatch as useAppDispatch, useSelector as useAppSelector, TypedUseS
 // project import
 import reducers from './reducers';
 import { usersApi } from './reducers/usersSlice';
+import { projectsApi } from './reducers/projectsSlice';
 
 // ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
   reducer: reducers,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware, projectsApi.middleware)
 });
 
 setupListeners(store.dispatch);

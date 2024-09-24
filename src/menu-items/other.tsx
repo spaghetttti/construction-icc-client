@@ -11,7 +11,8 @@ import {
   QuestionOutlined,
   SmileOutlined,
   StopOutlined,
-  UserOutlined
+  UserOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 
 // type
@@ -27,7 +28,8 @@ const icons = {
   QuestionOutlined,
   StopOutlined,
   SmileOutlined,
-  UserOutlined
+  UserOutlined,
+  HomeOutlined
 };
 
 // ==============================|| MENU ITEMS - SUPPORT ||============================== //
@@ -43,6 +45,13 @@ const other: NavItemType = {
       type: 'item',
       url: '/users-list',
       icon: icons.UserOutlined
+    },
+    {
+      id: 'projects',
+      title: <FormattedMessage id="projects" />,
+      type: 'item',
+      url: '/projects',
+      icon: icons.HomeOutlined
     },
     {
       id: 'disabled-menu',

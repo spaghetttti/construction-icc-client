@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 import menu from './menu';
 import snackbar from './snackbar';
 import user, { usersApi } from './usersSlice';
+import project, { projectsApi } from './projectsSlice';
 
 // ==============================|| COMBINE REDUCERS ||============================== //
 
@@ -12,7 +13,9 @@ const reducers = combineReducers({
   menu,
   snackbar,
   user,
-  [usersApi.reducerPath]: usersApi.reducer
+  project,
+  [usersApi.reducerPath]: usersApi.reducer,
+  [projectsApi.reducerPath]: projectsApi.reducer
 });
 
 export default reducers;
