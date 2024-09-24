@@ -5,13 +5,14 @@ import { FormattedMessage } from 'react-intl';
 import {
   BorderOutlined,
   BoxPlotOutlined,
-  ChromeOutlined,
   DeploymentUnitOutlined,
   GatewayOutlined,
   MenuUnfoldOutlined,
   QuestionOutlined,
   SmileOutlined,
-  StopOutlined
+  StopOutlined,
+  UserOutlined,
+  HomeOutlined
 } from '@ant-design/icons';
 
 // type
@@ -21,13 +22,14 @@ import { NavItemType } from 'types/menu';
 const icons = {
   BorderOutlined,
   BoxPlotOutlined,
-  ChromeOutlined,
   DeploymentUnitOutlined,
   GatewayOutlined,
   MenuUnfoldOutlined,
   QuestionOutlined,
   StopOutlined,
-  SmileOutlined
+  SmileOutlined,
+  UserOutlined,
+  HomeOutlined
 };
 
 // ==============================|| MENU ITEMS - SUPPORT ||============================== //
@@ -38,11 +40,18 @@ const other: NavItemType = {
   type: 'group',
   children: [
     {
-      id: 'sample-page',
-      title: <FormattedMessage id="sample-page" />,
+      id: 'users-list',
+      title: <FormattedMessage id="users-list" />,
       type: 'item',
-      url: '/sample-page',
-      icon: icons.ChromeOutlined
+      url: '/users-list',
+      icon: icons.UserOutlined
+    },
+    {
+      id: 'projects',
+      title: <FormattedMessage id="projects" />,
+      type: 'item',
+      url: '/projects',
+      icon: icons.HomeOutlined
     },
     {
       id: 'disabled-menu',

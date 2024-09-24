@@ -96,10 +96,10 @@ const UserCard = ({ customer }: { customer: UserCardProps }) => {
                   <Avatar alt={customer.fatherName} src={`/assets/images/users/avatar-${!customer.avatar ? 1 : customer.avatar}.png`} />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<Typography variant="subtitle1">{customer.fatherName}</Typography>}
+                  primary={<Typography variant="subtitle1">{customer.firstName}</Typography>}
                   secondary={
                     <Typography variant="caption" color="secondary">
-                      {customer.role}
+                      {customer.firstName}
                     </Typography>
                   }
                 />
