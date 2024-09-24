@@ -1,15 +1,20 @@
 // third-party
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query/react';
 import { useDispatch as useAppDispatch, useSelector as useAppSelector, TypedUseSelectorHook } from 'react-redux';
 
 // project import
 import reducers from './reducers';
+import { usersApi } from './reducers/usersSlice';
 
 // ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
-  reducer: reducers
+  reducer: reducers,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware)
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof reducers>;
 

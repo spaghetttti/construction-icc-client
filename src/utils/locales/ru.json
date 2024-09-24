@@ -64,6 +64,7 @@
   "forms-validation": "Валидация форм",
   "forms-wizard": "Мастер форм",
   "grouping": "Группировка",
+  "home": "Главая",
   "inputs": "Вводы",
   "layout": "Макет",
   "level": "Уровень",
@@ -124,7 +125,7 @@
   "umbrella": "Зонтик",
   "under-construction": "В разработке",
   "user-card": "Карточка пользователя",
-  "user-list": "Список пользователей",
+  "users-list": "Список пользователей",
   "user-profile": "Профиль пользователя",
   "utils": "Утилиты",
   "widgets": "Виджеты"

@@ -13,16 +13,17 @@ module.exports = withTM({
   env: {
     REACT_APP_VERSION: process.env.REACT_APP_VERSION,
     GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL
-  },
-  async redirects() {
-    // redirect - default first page should be `login` when root URL like http://example.com/
-    return [
-      {
-        source: '/',
-        destination: '/sample-page',
-        permanent: true
-      }
-    ];
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    SERVER_URL: process.env.SERVER_URL
   }
+  // async redirects() {
+  //   // redirect - default first page should be `login` when root URL like http://example.com/
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/users-list',
+  //       permanent: true
+  //     }
+  //   ];
+  // }
 });

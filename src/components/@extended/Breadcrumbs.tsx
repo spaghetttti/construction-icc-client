@@ -17,6 +17,7 @@ import { ApartmentOutlined, HomeOutlined, HomeFilled } from '@ant-design/icons';
 // types
 import { OverrideIcon } from 'types/root';
 import { NavItemType } from 'types/menu';
+import { FormattedMessage } from 'react-intl';
 
 // ==============================|| BREADCRUMBS ||============================== //
 
@@ -156,7 +157,7 @@ const Breadcrumbs = ({
                 <Typography color="textSecondary" variant="h6" sx={{ textDecoration: 'none' }}>
                   {icons && <HomeOutlined style={iconSX} />}
                   {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
-                  {(!icon || icons) && 'Home'}
+                  {(!icon || icons) && <FormattedMessage id="home" />}
                 </Typography>
               </NextLink>
               {mainContent}
@@ -212,7 +213,7 @@ const Breadcrumbs = ({
                 <Typography color="textSecondary" variant="h6" sx={{ textDecoration: 'none' }}>
                   {icons && <HomeOutlined style={iconSX} />}
                   {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
-                  {(!icon || icons) && 'Home'}
+                  {(!icon || icons) && <FormattedMessage id="home" />}
                 </Typography>
               </NextLink>
               {mainContent}

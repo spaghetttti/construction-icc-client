@@ -64,6 +64,7 @@
   "forms-validation": "Forms Validation",
   "forms-wizard": "Forms Wizard",
   "grouping": "Grouping",
+  "home": "Home",
   "inputs": "Inputs",
   "layout": "Layout",
   "level": "Level",
@@ -124,7 +125,7 @@
   "umbrella": "Umbrella",
   "under-construction": "Under Construction",
   "user-card": "User Card",
-  "user-list": "User List",
+  "users-list": "Users List",
   "user-profile": "User Profile",
   "utils": "Utils",
   "widgets": "Widgets"
