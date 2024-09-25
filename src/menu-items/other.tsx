@@ -13,7 +13,8 @@ import {
   StopOutlined,
   UserOutlined,
   HomeOutlined,
-  AppstoreOutlined
+  AppstoreOutlined,
+  FileTextOutlined
 } from '@ant-design/icons';
 
 // type
@@ -31,7 +32,8 @@ const icons = {
   SmileOutlined,
   UserOutlined,
   HomeOutlined,
-  AppstoreOutlined
+  AppstoreOutlined,
+  FileTextOutlined
 };
 
 // ==============================|| MENU ITEMS - SUPPORT ||============================== //
@@ -61,6 +63,13 @@ const other: NavItemType = {
       type: 'item',
       url: '/inventory',
       icon: icons.AppstoreOutlined
+    },
+    {
+      id: 'requests',
+      title: <FormattedMessage id="requests" />,
+      type: 'item',
+      url: '/requests',
+      icon: icons.FileTextOutlined
     },
     {
       id: 'disabled-menu',
