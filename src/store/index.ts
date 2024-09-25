@@ -7,12 +7,13 @@ import { useDispatch as useAppDispatch, useSelector as useAppSelector, TypedUseS
 import reducers from './reducers';
 import { usersApi } from './reducers/usersSlice';
 import { projectsApi } from './reducers/projectsSlice';
+import { materialsApi } from './reducers/materialsSlice';
 
 // ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
   reducer: reducers,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware, projectsApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware, projectsApi.middleware, materialsApi.middleware)
 });
 
 setupListeners(store.dispatch);

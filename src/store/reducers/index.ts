@@ -6,6 +6,7 @@ import menu from './menu';
 import snackbar from './snackbar';
 import user, { usersApi } from './usersSlice';
 import project, { projectsApi } from './projectsSlice';
+import material, { materialsApi } from './materialsSlice';
 
 // ==============================|| COMBINE REDUCERS ||============================== //
 
@@ -14,8 +15,10 @@ const reducers = combineReducers({
   snackbar,
   user,
   project,
+  material,
   [usersApi.reducerPath]: usersApi.reducer,
-  [projectsApi.reducerPath]: projectsApi.reducer
+  [projectsApi.reducerPath]: projectsApi.reducer,
+  [materialsApi.reducerPath]: materialsApi.reducer
 });
 
 export default reducers;
