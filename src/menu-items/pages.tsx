@@ -59,7 +59,7 @@ const pages: NavItemType = {
       type: 'item',
       url: '/inventory',
       icon: icons.AppstoreOutlined,
-      info: ' Страница управления инвентарем (складом) материалов'
+      info: 'Страница управления инвентарем (складом) материалов'
     },
     {
       id: 'requests',
@@ -75,7 +75,7 @@ const pages: NavItemType = {
       type: 'item',
       url: '/suppliers',
       icon: icons.ShoppingCartOutlined,
-      info: 'аница управления поставщиков'
+      info: 'Cтраница управления поставщиков'
     },
     {
       id: 'accounting',
