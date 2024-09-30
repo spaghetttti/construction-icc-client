@@ -23,6 +23,7 @@ export type NavItemType = {
   title?: ReactNode | string;
   type?: string;
   url?: string | undefined;
+  info?: string | undefined;
 };
 
 export type LinkTarget = '_blank' | '_self' | '_parent' | '_top';

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 // material-ui
-import { Chip, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 
 // project import
 import MainCard from 'components/MainCard';
@@ -13,7 +13,8 @@ import { ReactTable } from 'components/ReactTable';
 
 // ==============================|| REACT TABLE - BASIC ||============================== //
 
-const ProjectsTable = ({ data, striped, title }: { data: []; striped?: boolean; title?: string }) => {
+const InventoryTable = ({ data, striped, title }: { data: []; striped?: boolean; title?: string }) => {
+  console.log(data);
   const columns = useMemo(
     () => [
       {
@@ -21,29 +22,26 @@ const ProjectsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
         accessor: 'name'
       },
       {
-        Header: 'Описание',
-        accessor: 'description'
+        Header: 'Вид',
+        accessor: 'type'
       },
       {
-        Header: 'Статус',
-        accessor: 'status',
-        Cell: ({ value }: { value: string }) => {
-          switch (value) {
-            case 'Complicated':
-              return <Chip color="error" label="Complicated" size="small" variant="light" />;
-            case 'Relationship':
-              return <Chip color="success" label="Relationship" size="small" variant="light" />;
-            case 'Single':
-            default:
-              return <Chip color="info" label={value} size="small" variant="light" />;
-          }
-        }
+        Header: 'Eдиница',
+        accessor: 'unit'
       },
       {
-        Header: 'Прораб',
-        accessor: 'assignedForeman',
+        Header: 'Цена за единицу',
+        accessor: 'costPerUnit'
+      },
+      {
+        Header: 'Количество',
+        accessor: 'quantity'
+      },
+      {
+        Header: 'Поставщик',
+        accessor: 'supplier',
         Cell: ({ value }: { value: User }) => {
-          return <>{value?.username}</>;
+          return <>{value?.name}</>;
         }
       }
     ],
@@ -64,4 +62,4 @@ const ProjectsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
   );
 };
 
-export default ProjectsTable;
+export default InventoryTable;
