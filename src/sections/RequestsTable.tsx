@@ -17,7 +17,6 @@ import AnimateButton from 'components/@extended/AnimateButton';
 // ==============================|| REACT TABLE - BASIC ||============================== //
 
 const RequestsTable = ({ data, striped, title }: { data: []; striped?: boolean; title?: string }) => {
-  console.log(data);
   const columns = useMemo(
     () => [
       {

@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="theme-color" content="#2296f3" />
-        <meta name="title" content="TITLE_CONTENT" />
+        <meta name="title" content="SardorBuild" />
         <meta name="description" content="DESCRIPTION_CONTENT" />
         <meta name="keywords" content="KEYWORDS_CONTENT" />
 

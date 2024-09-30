@@ -1,6 +1,7 @@
 {
   "accordion": "Accordion",
   "account-profile": "Account Profile",
+  "accounting": "Accounting",
   "action-bar": "Action Bar",
   "add-new-product": "Add New Product",
   "alert": "Alert",
@@ -118,6 +119,7 @@
   "stepper": "Stepper",
   "sticky-bar": "Sticky Bar",
   "surfaces": "Surfaces",
+  "suppliers": "Suppliers",
   "switch": "Switch",
   "tabs": "Tabs",
   "text-field": "Text Field",

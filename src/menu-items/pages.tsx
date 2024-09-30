@@ -2,13 +2,33 @@
 import { FormattedMessage } from 'react-intl';
 
 // assets
-import { DollarOutlined, LoginOutlined, PhoneOutlined, RocketOutlined } from '@ant-design/icons';
+import {
+  LoginOutlined,
+  PhoneOutlined,
+  RocketOutlined,
+  UserOutlined,
+  HomeOutlined,
+  AppstoreOutlined,
+  FileTextOutlined,
+  ShoppingCartOutlined,
+  DollarOutlined
+} from '@ant-design/icons';
 
 // type
 import { NavItemType } from 'types/menu';
 
 // icons
-const icons = { DollarOutlined, LoginOutlined, PhoneOutlined, RocketOutlined };
+const icons = {
+  LoginOutlined,
+  PhoneOutlined,
+  RocketOutlined,
+  UserOutlined,
+  HomeOutlined,
+  AppstoreOutlined,
+  FileTextOutlined,
+  ShoppingCartOutlined,
+  DollarOutlined
+};
 
 // ==============================|| MENU ITEMS - PAGES ||============================== //
 
@@ -17,6 +37,54 @@ const pages: NavItemType = {
   title: <FormattedMessage id="pages" />,
   type: 'group',
   children: [
+    {
+      id: 'users-list',
+      title: <FormattedMessage id="users-list" />,
+      type: 'item',
+      url: '/users-list',
+      icon: icons.UserOutlined,
+      info: 'Страница управления ролями пользователей'
+    },
+    {
+      id: 'projects',
+      title: <FormattedMessage id="projects" />,
+      type: 'item',
+      url: '/projects',
+      icon: icons.HomeOutlined,
+      info: 'Страница управления проектами пользователей'
+    },
+    {
+      id: 'inventory',
+      title: <FormattedMessage id="inventory" />,
+      type: 'item',
+      url: '/inventory',
+      icon: icons.AppstoreOutlined,
+      info: ' Страница управления инвентарем (складом) материалов'
+    },
+    {
+      id: 'requests',
+      title: <FormattedMessage id="requests" />,
+      type: 'item',
+      url: '/requests',
+      icon: icons.FileTextOutlined,
+      info: 'Страница управления заявками к проектам'
+    },
+    {
+      id: 'suppliers',
+      title: <FormattedMessage id="suppliers" />,
+      type: 'item',
+      url: '/suppliers',
+      icon: icons.ShoppingCartOutlined,
+      info: 'аница управления поставщиков'
+    },
+    {
+      id: 'accounting',
+      title: <FormattedMessage id="accounting" />,
+      type: 'item',
+      url: '/accounting',
+      icon: icons.DollarOutlined,
+      info: 'Страница управления финансами компании'
+    },
     {
       id: 'contact-us',
       title: <FormattedMessage id="contact-us" />,

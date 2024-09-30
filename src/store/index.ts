@@ -9,13 +9,22 @@ import { usersApi } from './reducers/usersSlice';
 import { projectsApi } from './reducers/projectsSlice';
 import { materialsApi } from './reducers/materialsSlice';
 import { requestsApi } from './reducers/requestsSlice';
+import { suppliersApi } from './reducers/suppliersSlice';
+import { accountingReportsApi } from './reducers/accountingReportsSlice';
 
 // ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
   reducer: reducers,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(usersApi.middleware, projectsApi.middleware, materialsApi.middleware, requestsApi.middleware)
+    getDefaultMiddleware().concat(
+      usersApi.middleware,
+      projectsApi.middleware,
+      materialsApi.middleware,
+      requestsApi.middleware,
+      suppliersApi.middleware,
+      accountingReportsApi.middleware
+    )
 });
 
 setupListeners(store.dispatch);

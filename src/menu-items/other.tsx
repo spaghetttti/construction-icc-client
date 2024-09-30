@@ -14,7 +14,9 @@ import {
   UserOutlined,
   HomeOutlined,
   AppstoreOutlined,
-  FileTextOutlined
+  FileTextOutlined,
+  ShoppingCartOutlined,
+  DollarOutlined
 } from '@ant-design/icons';
 
 // type
@@ -33,7 +35,9 @@ const icons = {
   UserOutlined,
   HomeOutlined,
   AppstoreOutlined,
-  FileTextOutlined
+  FileTextOutlined,
+  ShoppingCartOutlined,
+  DollarOutlined
 };
 
 // ==============================|| MENU ITEMS - SUPPORT ||============================== //
@@ -43,34 +47,6 @@ const other: NavItemType = {
   title: <FormattedMessage id="others" />,
   type: 'group',
   children: [
-    {
-      id: 'users-list',
-      title: <FormattedMessage id="users-list" />,
-      type: 'item',
-      url: '/users-list',
-      icon: icons.UserOutlined
-    },
-    {
-      id: 'projects',
-      title: <FormattedMessage id="projects" />,
-      type: 'item',
-      url: '/projects',
-      icon: icons.HomeOutlined
-    },
-    {
-      id: 'inventory',
-      title: <FormattedMessage id="inventory" />,
-      type: 'item',
-      url: '/inventory',
-      icon: icons.AppstoreOutlined
-    },
-    {
-      id: 'requests',
-      title: <FormattedMessage id="requests" />,
-      type: 'item',
-      url: '/requests',
-      icon: icons.FileTextOutlined
-    },
     {
       id: 'disabled-menu',
       title: <FormattedMessage id="disabled-menu" />,
