@@ -11,7 +11,7 @@ export type Material = {
 
 export const materialsApi = createApi({
   reducerPath: 'materialsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.SERVER_URL}/inventory/` }), // Adjust base URL according to your API
+  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.SERVER_URL}/inventory` }), // Adjust base URL according to your API
   tagTypes: ['Material'],
   endpoints: (builder) => ({
     getMaterials: builder.query<Material[], void>({
