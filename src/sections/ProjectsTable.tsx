@@ -17,6 +17,10 @@ const ProjectsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
   const columns = useMemo(
     () => [
       {
+        Header: '#',
+        accessor: 'id'
+      },
+      {
         Header: 'Название',
         accessor: 'name'
       },
@@ -58,7 +62,7 @@ const ProjectsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
     >
       <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2}></Stack>
       <ScrollX>
-        <ReactTable columns={columns} data={data} striped={striped} />
+        <ReactTable columns={columns} data={data} striped={striped} withLinks={true} />
       </ScrollX>
     </MainCard>
   );

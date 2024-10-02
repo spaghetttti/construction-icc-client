@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 // material-ui
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 // project imports
 import Layout from 'layout';
@@ -9,6 +9,9 @@ import Page from 'components/Page';
 import MainCard from 'components/MainCard';
 import { useGetProjectsQuery } from 'store/reducers/projectsSlice';
 import ProjectsTable from 'sections/ProjectsTable';
+import AnimateButton from 'components/@extended/AnimateButton';
+import { FormattedMessage } from 'react-intl';
+import { FileAddOutlined } from '@ant-design/icons';
 
 // ==============================|| Users List PAGE ||============================== //
 
@@ -21,9 +24,15 @@ const ProjectsPage = () => {
   return (
     <Page title="">
       <MainCard title="">
-        <Typography variant="body2">
-          <ProjectsTable data={projects as any} />
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2 }}>
+          <Typography variant="h3">Лист проектов</Typography>
+          <AnimateButton>
+            <Button variant="shadow" endIcon={<FileAddOutlined />} href="projects/new">
+              <FormattedMessage id="create-project" />
+            </Button>
+          </AnimateButton>
+        </Box>
+        <ProjectsTable data={projects as any} />
       </MainCard>
     </Page>
   );
