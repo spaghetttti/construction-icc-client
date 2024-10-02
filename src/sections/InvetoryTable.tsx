@@ -60,7 +60,7 @@ const InventoryTable = ({ data, striped, title }: { data: []; striped?: boolean;
     >
       <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2}></Stack>
       <ScrollX>
-        <ReactTable columns={columns} data={data} striped={striped} />
+        <ReactTable columns={columns} data={data} striped={striped} withLinks={true} />
       </ScrollX>
     </MainCard>
   );

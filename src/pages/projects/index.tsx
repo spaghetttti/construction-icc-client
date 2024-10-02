@@ -25,9 +25,7 @@ const ProjectsPage = () => {
     <Page title="">
       <MainCard title="">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2 }}>
-          <Typography variant='h3'>
-            Лист проектов
-          </Typography>
+          <Typography variant="h3">Лист проектов</Typography>
           <AnimateButton>
             <Button variant="shadow" endIcon={<FileAddOutlined />} href="projects/new">
               <FormattedMessage id="create-project" />
