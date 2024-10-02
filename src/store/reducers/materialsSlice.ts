@@ -7,6 +7,7 @@ export type Material = {
   type: string;
   unit: string;
   costPerUnit: number;
+  supplier: Record<any, any>;
 };
 
 export const materialsApi = createApi({

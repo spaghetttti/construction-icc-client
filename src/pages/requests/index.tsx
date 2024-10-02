@@ -1,10 +1,12 @@
 import { ReactElement } from 'react';
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import Page from 'components/Page';
 import MainCard from 'components/MainCard';
 import Layout from 'layout';
 import { useGetRequestsQuery } from 'store/reducers/requestsSlice';
 import RequestsTable from 'sections/RequestsTable';
+import { FileAddOutlined } from '@ant-design/icons';
+import AnimateButton from 'components/@extended/AnimateButton';
 
 const InventoryPage = () => {
   const { data: requests, error, isLoading } = useGetRequestsQuery();
@@ -15,9 +17,15 @@ const InventoryPage = () => {
   return (
     <Page title="Inventory">
       <MainCard title="Materials Inventory">
-        <Typography variant="body2">
-          <RequestsTable data={requests as any} />
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2 }}>
+          <Typography variant="h3">Лист заявок</Typography>
+          <AnimateButton>
+            <Button variant="shadow" endIcon={<FileAddOutlined />} href="requests/new">
+              Создать заявку
+            </Button>
+          </AnimateButton>
+        </Box>
+        <RequestsTable data={requests as any} />
       </MainCard>
     </Page>
   );
