@@ -38,7 +38,7 @@ const RequestsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
           return (
             <>
               <AnimateButton>
-                <Button variant="shadow" size="small" component={Link} href="/" target="_blank">
+                <Button variant="shadow" size="small" component={Link} href={`/projects/${value.id}`} target="_blank">
                   {value?.name}
                   <ExportOutlined />
                 </Button>
