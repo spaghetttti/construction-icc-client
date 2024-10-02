@@ -16,6 +16,10 @@ const SuppliersTable = ({ data, striped, title }: { data: []; striped?: boolean;
   const columns = useMemo(
     () => [
       {
+        Header: '#',
+        accessor: 'id'
+      },
+      {
         Header: 'Имя / Название магазина',
         accessor: 'name'
       },

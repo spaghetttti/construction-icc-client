@@ -99,7 +99,7 @@ const UserCard = ({ customer }: { customer: UserCardProps }) => {
                   primary={<Typography variant="subtitle1">{customer.firstName}</Typography>}
                   secondary={
                     <Typography variant="caption" color="secondary">
-                      {customer.firstName}
+                      {customer.role}
                     </Typography>
                   }
                 />

@@ -20,7 +20,7 @@ const RequestsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
   const columns = useMemo(
     () => [
       {
-        Header: 'ID',
+        Header: '#',
         accessor: 'id'
       },
       {

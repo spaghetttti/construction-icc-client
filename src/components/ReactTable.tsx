@@ -1,13 +1,26 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-// third-party
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 import { Column, useTable, HeaderGroup, Cell } from 'react-table';
 // ==============================|| REACT TABLE ||============================== //
 
-export function ReactTable({ columns, data, striped }: { columns: Column[]; data: []; striped?: boolean }) {
+export function ReactTable({
+  columns,
+  data,
+  striped,
+  withLinks = true
+}: {
+  columns: Column[];
+  data: [];
+  striped?: boolean;
+  withLinks?: boolean;
+}) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data
   });
+  const router = useRouter();
 
   return (
     <Table {...getTableProps()}>
@@ -25,14 +38,19 @@ export function ReactTable({ columns, data, striped }: { columns: Column[]; data
       <TableBody {...getTableBodyProps()} {...(striped && { className: 'striped' })}>
         {rows.map((row, i) => {
           prepareRow(row);
+          // implement withLinks = false
           return (
-            <TableRow {...row.getRowProps()} key={i}>
-              {row.cells.map((cell: Cell<{}>, i: number) => (
-                <TableCell {...cell.getCellProps([{ className: '' }])} key={i}>
-                  {cell.render('Cell')}
-                </TableCell>
-              ))}
-            </TableRow>
+            <Link href={`${router.asPath}/${row.values.id}`}>
+              <TableRow {...row.getRowProps()} key={i}>
+                {row.cells.map((cell: Cell<{}>, i: number) => {
+                  return (
+                    <TableCell {...cell.getCellProps([{ className: '' }])} key={i}>
+                      {cell.render('Cell')}
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            </Link>
           );
         })}
       </TableBody>

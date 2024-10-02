@@ -18,6 +18,10 @@ const InventoryTable = ({ data, striped, title }: { data: []; striped?: boolean;
   const columns = useMemo(
     () => [
       {
+        Header: '#',
+        accessor: 'id'
+      },
+      {
         Header: 'Название',
         accessor: 'name'
       },

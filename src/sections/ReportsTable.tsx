@@ -22,6 +22,10 @@ const ReportsTable = ({ data, striped, title }: { data: []; striped?: boolean; t
   const columns = useMemo(
     () => [
       {
+        Header: '#',
+        accessor: 'id'
+      },
+      {
         Header: 'Описание',
         accessor: 'description'
       },
