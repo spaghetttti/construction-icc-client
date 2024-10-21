@@ -1,13 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Project } from './projectsSlice';
-import { Material } from './materialsSlice';
 
 export type Request = {
   id: number;
   status: string;
   teamSize: number;
   project: Project;
-  materials: Material[];
+  materials: Record<string, number>[];
 };
 
 export const requestsApi = createApi({

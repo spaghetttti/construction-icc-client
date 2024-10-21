@@ -1,7 +1,6 @@
 // slices/accountingReportsSlice.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Project } from './projectsSlice';
-import { Material } from './materialsSlice';
 import { User } from './usersSlice';
 
 export type Report = {
@@ -9,9 +8,9 @@ export type Report = {
   description: string;
   amount: number;
   dateOfTransaction: string;
-  type: 'income' | 'outcome';
+  type: string; //dumb error in createtransactionpage
   project?: Project;
-  material?: Material;
+  material?: Record<string, number>[];
   person: User;
 };
 

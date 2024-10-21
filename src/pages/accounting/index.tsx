@@ -1,8 +1,11 @@
-import { Typography } from '@mui/material';
+import { DollarCircleFilled } from '@ant-design/icons';
+import { Box, Button, Typography } from '@mui/material';
+import AnimateButton from 'components/@extended/AnimateButton';
 import MainCard from 'components/MainCard';
 import Page from 'components/Page';
 import Layout from 'layout';
 import { ReactElement } from 'react';
+// import { FormattedMessage } from 'react-intl';
 import ReportsTable from 'sections/ReportsTable';
 import { useGetAccountingQuery, useGetReportsQuery } from 'store/reducers/accountingReportsSlice';
 import { formatMoney } from 'utils/formatUtils';
@@ -17,7 +20,16 @@ const AccountingPage = () => {
   return (
     <Page title="">
       <MainCard title="">
-        <Typography variant="h3">Баланс: {formatMoney(mainAccount?.balance ?? 0)}</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2 }}>
+          <Typography variant="h3">Баланс: {formatMoney(mainAccount?.balance ?? 0)}</Typography>
+          <AnimateButton>
+            <Button variant="shadow" endIcon={<DollarCircleFilled />} href="accounting/new">
+              {/* <FormattedMessage id="create-project" /> */}
+              Записать Транзакцию
+            </Button>
+          </AnimateButton>
+        </Box>
+
         <ReportsTable data={(reports as any) ?? []} />
       </MainCard>
     </Page>
