@@ -20,6 +20,7 @@ import {
   useUpdateSupplierMutation
 } from 'store/reducers/suppliersSlice';
 import { CloseOutlined } from '@ant-design/icons';
+import { useIntl } from 'react-intl';
 
 const validationSchema = yup.object({
   name: yup.string().required('name is required'),
@@ -43,6 +44,7 @@ const SupplierPage = () => {
   const [deleteSupplier, { isLoading: isDeleting }] = useDeleteSupplierMutation();
   const [error, setError] = useState<any>();
   const [newPhoneNumber, setNewPhoneNumber] = useState('');
+  const intl = useIntl();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -95,7 +97,7 @@ const SupplierPage = () => {
   }
 
   return (
-    <MainCard title={isEditMode ? 'Edit Supplier' : 'Create Supplier'}>
+    <MainCard title={isEditMode ? intl.formatMessage({ id: 'edit-supplier' }) : intl.formatMessage({ id: 'create-supplier' })}>
       {error && (
         <Typography color="error" variant="body2" sx={{ mt: 2 }}>
           {error}
@@ -105,12 +107,12 @@ const SupplierPage = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="name">Suppliers Name</InputLabel>
+              <InputLabel htmlFor="name">{intl.formatMessage({ id: 'supplier-name' })}</InputLabel>
               <TextField
                 fullWidth
                 id="name"
                 name="name"
-                placeholder="Enter suppliers name"
+                placeholder={intl.formatMessage({ id: 'enter-suppliers-name' })}
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
@@ -121,7 +123,7 @@ const SupplierPage = () => {
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="contactInfo">Contact Info (phone numbers)</InputLabel>
+              <InputLabel htmlFor="contactInfo">{intl.formatMessage({ id: 'contact-info-phone-numbers' })}</InputLabel>
               <Box>
                 {formik.values.contactInfo.map((phoneNumber: string, index: number) => (
                   <Chip
@@ -139,7 +141,7 @@ const SupplierPage = () => {
                 fullWidth
                 id="contactInfo"
                 name="contactInfo"
-                placeholder="Enter suppliers contactInfo"
+                placeholder={intl.formatMessage({ id: 'enter-suppliers-contact-info' })}
                 multiline
                 value={newPhoneNumber}
                 onChange={(e) => setNewPhoneNumber(e.target.value)}
@@ -148,19 +150,19 @@ const SupplierPage = () => {
               />
               {formik.errors.contactInfo && <FormHelperText error={true}>{String(formik.errors.contactInfo)}</FormHelperText>}
               <Button variant="contained" onClick={handleAddPhoneNumber}>
-                Add Phone Number
+                {intl.formatMessage({ id: 'add-phone-number' })}
               </Button>
             </Stack>
           </Grid>
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="address">Suppliers Address</InputLabel>
+              <InputLabel htmlFor="address">{intl.formatMessage({ id: 'suppliers-address' })}</InputLabel>
               <TextField
                 fullWidth
                 id="address"
                 name="address"
-                placeholder="Enter suppliers address"
+                placeholder={intl.formatMessage({ id: 'enter-suppliers-address' })}
                 value={formik.values.address}
                 onChange={formik.handleChange}
                 error={formik.touched.address && Boolean(formik.errors.address)}
@@ -173,12 +175,12 @@ const SupplierPage = () => {
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="email">Suppliers email</InputLabel>
+              <InputLabel htmlFor="email">{intl.formatMessage({ id: 'suppliers-email' })}</InputLabel>
               <TextField
                 fullWidth
                 id="email"
                 name="email"
-                placeholder="Enter suppliers email"
+                placeholder={intl.formatMessage({ id: 'enter-suppliers-email' })}
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 error={formik.touched.email && Boolean(formik.errors.email)}
@@ -191,19 +193,20 @@ const SupplierPage = () => {
             <Stack direction="row" justifyContent="space-between">
               {isEditMode ? (
                 <AlertDialog
-                  title="Are you sure you want to delete this Supplier?"
-                  description="Deleting this Supplier is permanent and cannot be undone."
-                  confirmText="Delete"
-                  cancelText="Cancel"
+                  title={intl.formatMessage({ id: 'are-you-sure-you-want-to-delete-this-supplier' })}
+                  description={intl.formatMessage({ id: 'deleting-this-supplier-is-permanent-and-cannot-be-undone' })}
+                  confirmText={intl.formatMessage({ id: 'delete' })}
+                  cancelText={intl.formatMessage({ id: 'cancel' })}
                   onConfirm={handleSupplierDelete}
-                  openButtonText="Delete Supplier"
+                  openButtonText={intl.formatMessage({ id: 'delete-supplier' })}
                 />
               ) : (
                 ''
               )}
+
               <AnimateButton>
                 <Button variant="contained" type="submit">
-                  {isEditMode ? 'Update Supplier' : 'Create Supplier'}
+                  {isEditMode ? intl.formatMessage({ id: 'update-supplier' }) : intl.formatMessage({ id: 'create-supplier' })}
                 </Button>
               </AnimateButton>
             </Stack>

@@ -21,6 +21,7 @@ import { useGetUsersQuery } from '../../store/reducers/usersSlice';
 import Layout from 'layout';
 import { ReactElement, useState } from 'react';
 import AlertDialog from 'components/AlertDialog';
+import { useIntl } from 'react-intl';
 
 // Yup validation schema for project form
 const validationSchema = yup.object({
@@ -40,6 +41,7 @@ const ProjectPage = () => {
   const [addProject] = useAddProjectMutation();
   const [deleteProject, { isLoading: isDeleting }] = useDeleteProjectMutation();
   const [error, setError] = useState<any>();
+  const intl = useIntl();
 
   // Formik setup
   const formik = useFormik({
@@ -47,7 +49,7 @@ const ProjectPage = () => {
     initialValues: {
       name: projectData?.name || '',
       description: projectData?.description || '',
-      status: projectData?.status || 'Not Started',
+      status: projectData?.status || intl.formatMessage({ id: 'edit-project' }),
       assignedForeman: projectData?.assignedForeman?.id || 0
     },
     validationSchema,
@@ -78,7 +80,7 @@ const ProjectPage = () => {
   }
 
   return (
-    <MainCard title={isEditMode ? 'Edit Project' : 'Create Project'}>
+    <MainCard title={isEditMode ? intl.formatMessage({ id: 'edit-project' }) : intl.formatMessage({ id: 'create-project' })}>
       {error && (
         <Typography color="error" variant="body2" sx={{ mt: 2 }}>
           {error}
@@ -88,12 +90,12 @@ const ProjectPage = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="name">Project Name</InputLabel>
+              <InputLabel htmlFor="name">{intl.formatMessage({ id: 'project-name' })}</InputLabel>
               <TextField
                 fullWidth
                 id="name"
                 name="name"
-                placeholder="Enter project name"
+                placeholder={intl.formatMessage({ id: 'enter-project-name' })}
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
@@ -104,12 +106,12 @@ const ProjectPage = () => {
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="description">Description</InputLabel>
+              <InputLabel htmlFor="description">{intl.formatMessage({ id: 'description' })}</InputLabel>
               <TextField
                 fullWidth
                 id="description"
                 name="description"
-                placeholder="Enter project description"
+                // placeholder={intl.formatMessage({ id: 'description' })}
                 multiline
                 rows={4}
                 value={formik.values.description}
@@ -124,11 +126,11 @@ const ProjectPage = () => {
 
           <Grid item xs={12}>
             <FormControl fullWidth error={formik.touched.status && Boolean(formik.errors.status)}>
-              <InputLabel>Status</InputLabel>
+              <InputLabel>{intl.formatMessage({ id: 'status' })}</InputLabel>
               <Select id="status" name="status" value={formik.values.status} onChange={formik.handleChange}>
-                <MenuItem value="Not Started">Not Started</MenuItem>
-                <MenuItem value="In Progress">In Progress</MenuItem>
-                <MenuItem value="Completed">Completed</MenuItem>
+                <MenuItem value="Not Started">{intl.formatMessage({ id: 'not-started' })}</MenuItem>
+                <MenuItem value="In Progress">{intl.formatMessage({ id: 'in-progress' })}</MenuItem>
+                <MenuItem value="Completed">{intl.formatMessage({ id: 'completed' })}</MenuItem>
               </Select>
             </FormControl>
             {formik.touched.status && formik.errors.status && <FormHelperText error={true}>{String(formik.errors.status)}</FormHelperText>}
@@ -136,9 +138,9 @@ const ProjectPage = () => {
 
           <Grid item xs={12}>
             <FormControl fullWidth error={formik.touched.assignedForeman && Boolean(formik.errors.assignedForeman)}>
-              <InputLabel>Assigned Foreman</InputLabel>
+              <InputLabel>{intl.formatMessage({ id: 'assigned-foreman' })}</InputLabel>
               <Select id="assignedForeman" name="assignedForeman" value={formik.values.assignedForeman} onChange={formik.handleChange}>
-                <MenuItem value={-1}>Unassigned</MenuItem>
+                <MenuItem value={-1}>{intl.formatMessage({ id: 'unassigned' })}</MenuItem>
                 {users?.map((user) => (
                   <MenuItem key={user.id} value={user.id}>
                     {user.username}
@@ -152,19 +154,19 @@ const ProjectPage = () => {
             <Stack direction="row" justifyContent="space-between">
               {isEditMode ? (
                 <AlertDialog
-                  title="Are you sure you want to delete this project?"
-                  description="Deleting this project is permanent and cannot be undone."
-                  confirmText="Delete"
-                  cancelText="Cancel"
+                  title={intl.formatMessage({ id: 'are-you-sure-you-want-to-delete-this-project' })}
+                  description={intl.formatMessage({ id: 'deleting-this-project-is-permanent-and-cannot-be-undone' })}
+                  confirmText={intl.formatMessage({ id: 'delete' })}
+                  cancelText={intl.formatMessage({ id: 'cancel' })}
                   onConfirm={handleProjectDelete}
-                  openButtonText="Delete Project"
+                  openButtonText={intl.formatMessage({ id: 'delete-project' })}
                 />
               ) : (
                 ''
               )}
               <AnimateButton>
                 <Button variant="contained" type="submit">
-                  {isEditMode ? 'Update Project' : 'Create Project'}
+                  {isEditMode ? intl.formatMessage({ id: 'update-project' }) : intl.formatMessage({ id: 'create-project' })}
                 </Button>
               </AnimateButton>
             </Stack>

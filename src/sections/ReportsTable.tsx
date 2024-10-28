@@ -35,9 +35,9 @@ const ReportsTable = ({ data, striped, title }: { data: []; striped?: boolean; t
         Cell: ({ value }: { value: string }) => {
           switch (value) {
             case 'income':
-              return <Chip color="error" label="Доход" size="small" variant="light" />;
+              return <Chip color="success" label="Доход" size="small" variant="light" />;
             case 'outcome':
-              return <Chip color="success" label="Расход" size="small" variant="light" />;
+              return <Chip color="error" label="Расход" size="small" variant="light" />;
             default:
               return <Chip color="info" label={value} size="small" variant="light" />;
           }
@@ -61,17 +61,16 @@ const ReportsTable = ({ data, striped, title }: { data: []; striped?: boolean; t
         Header: 'Пользователь',
         accessor: 'person',
         Cell: ({ value }: { value: any }) => {
-          console.log(value);
+          if (!value) return <>-</>;
           return <>{value?.username}</>;
         }
       },
       {
-        Header: 'Материалы',
-        accessor: 'material',
-        Cell: ({ value }: { value: any }) => {
-          console.log(value);
-
-          return <>{value?.name}</>;
+        Header: 'Внешний',
+        accessor: 'externalPerson',
+        Cell: ({ value }: { value: string }) => {
+          if (!value) return <>-</>;
+          return <>{value}</>;
         }
       },
       {
@@ -101,7 +100,7 @@ const ReportsTable = ({ data, striped, title }: { data: []; striped?: boolean; t
     >
       <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2}></Stack>
       <ScrollX>
-        <ReactTable columns={columns} data={data} striped={striped} withLinks={true} />
+        <ReactTable columns={columns} data={data} striped={striped} withLinks={false} />
       </ScrollX>
     </MainCard>
   );
