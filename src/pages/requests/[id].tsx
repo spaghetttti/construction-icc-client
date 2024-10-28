@@ -21,7 +21,7 @@ import { useIntl } from 'react-intl';
 // Form validation schema
 const validationSchema = yup.object({
   status: yup.string().required('Status is required'),
-  teamSize: yup.number().required('Team size is required'),
+  teamSize: yup.number().min(1).required('Team size is required'),
   projectId: yup.number().required('Project is required'),
   materials: yup.array().of(
     yup.object({
