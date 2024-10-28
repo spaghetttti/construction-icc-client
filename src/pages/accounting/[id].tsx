@@ -78,7 +78,7 @@ const TransactionPage = () => {
     if (materialId) {
       window.open(`/inventory/${materialId}`, '_blank');
     } else {
-      window.open('/inventory/new', '_blank');
+      window.open('/inventory/', '_blank');
     }
   };
 
