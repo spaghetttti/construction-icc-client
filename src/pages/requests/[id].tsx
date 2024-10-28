@@ -16,6 +16,7 @@ import { useGetProjectsQuery } from 'store/reducers/projectsSlice';
 import { useGetMaterialsQuery } from 'store/reducers/materialsSlice';
 import AlertDialog from 'components/AlertDialog';
 import { CloseOutlined } from '@ant-design/icons';
+import { useIntl } from 'react-intl';
 
 // Form validation schema
 const validationSchema = yup.object({
@@ -43,6 +44,7 @@ const RequestPage = () => {
   const [addRequest] = useAddRequestMutation();
   const [deleteRequest, { isLoading: isDeleting }] = useDeleteRequestMutation();
   const [error, setError] = useState<string | null>(null);
+  const intl = useIntl();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -51,8 +53,8 @@ const RequestPage = () => {
       teamSize: requestData?.teamSize || 0,
       projectId: requestData?.project?.id || '',
       materials:
-        requestData?.materials?.map((material) => ({
-          materialId: material.id,
+        requestData?.requestMaterials?.map((material) => ({
+          materialId: material.material.id,
           quantity: material.quantity || 1
         })) || []
     },
@@ -103,7 +105,7 @@ const RequestPage = () => {
   }
 
   return (
-    <MainCard title={isEditMode ? 'Edit Request' : 'Create Request'}>
+    <MainCard title={isEditMode ? intl.formatMessage({ id: 'edit-request' }) : intl.formatMessage({ id: 'create-request' })}>
       {error && (
         <Typography color="error" variant="body2" sx={{ mt: 2 }}>
           {error}
@@ -113,12 +115,12 @@ const RequestPage = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="status">Request Status</InputLabel>
+              <InputLabel htmlFor="status">{intl.formatMessage({ id: 'request-status' })}</InputLabel>
               <TextField
                 fullWidth
                 id="status"
                 name="status"
-                placeholder="Enter request status"
+                placeholder={intl.formatMessage({ id: 'enter-request-status' })}
                 value={formik.values.status}
                 onChange={formik.handleChange}
                 error={formik.touched.status && Boolean(formik.errors.status)}
@@ -129,12 +131,12 @@ const RequestPage = () => {
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="teamSize">Team Size</InputLabel>
+              <InputLabel htmlFor="teamSize">{intl.formatMessage({ id: 'team-size' })}</InputLabel>
               <TextField
                 fullWidth
                 id="teamSize"
                 name="teamSize"
-                placeholder="Enter team size"
+                placeholder={intl.formatMessage({ id: 'enter-team-size' })}
                 type="number"
                 value={formik.values.teamSize}
                 onChange={formik.handleChange}
@@ -146,7 +148,7 @@ const RequestPage = () => {
 
           <Grid item xs={12}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="projectId">Project</InputLabel>
+              <InputLabel htmlFor="projectId">{intl.formatMessage({ id: 'project' })}</InputLabel>
               <Select
                 fullWidth
                 id="projectId"
@@ -202,7 +204,7 @@ const RequestPage = () => {
                 </Stack>
               ))}
               <Button onClick={() => handleMaterialChange(0, 1)} variant="outlined">
-                Add Material
+                {intl.formatMessage({ id: 'add-material' })}
               </Button>
               {formik.touched.materials && formik.errors.materials && (
                 <FormHelperText error={true}>{(formik.errors.materials as any)[0]?.materialId}</FormHelperText>
@@ -214,19 +216,19 @@ const RequestPage = () => {
             <Stack direction="row" justifyContent="space-between">
               {isEditMode ? (
                 <AlertDialog
-                  title="Are you sure you want to delete this Request?"
-                  description="Deleting this request is permanent and cannot be undone."
-                  confirmText="Delete"
-                  cancelText="Cancel"
+                  title={intl.formatMessage({ id: 'are-you-sure-you-want-to-delete-this-request' })}
+                  description={intl.formatMessage({ id: 'deleting-this-request-is-permanent-and-cannot-be-undone' })}
+                  confirmText={intl.formatMessage({ id: 'delete' })}
+                  cancelText={intl.formatMessage({ id: 'cancel' })}
                   onConfirm={handleDeleteRequest}
-                  openButtonText="Delete Request"
+                  openButtonText={intl.formatMessage({ id: 'delete-request' })}
                 />
               ) : (
                 ''
               )}
               <AnimateButton>
                 <Button variant="contained" type="submit">
-                  {isEditMode ? 'Update Request' : 'Create Request'}
+                  {isEditMode ? intl.formatMessage({ id: 'update-request' }) : intl.formatMessage({ id: 'create-request' })}
                 </Button>
               </AnimateButton>
             </Stack>

@@ -15,6 +15,7 @@ import {
   useUpdateMaterialMutation
 } from 'store/reducers/materialsSlice';
 import { useGetSuppliersQuery } from 'store/reducers/suppliersSlice';
+import { useIntl } from 'react-intl';
 
 const validationSchema = yup.object({
   name: yup.string().required('Material name is required'),
@@ -35,6 +36,7 @@ const MaterialPage = () => {
   const [addMaterial] = useAddMaterialMutation();
   const [deleteMaterial, { isLoading: isDeleting }] = useDeleteMaterialMutation();
   const [error, setError] = useState<any>();
+  const intl = useIntl();
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -85,12 +87,12 @@ const MaterialPage = () => {
           {/* Material Name */}
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="name">Material Name</InputLabel>
+              <InputLabel htmlFor="name">{intl.formatMessage({ id: 'material-name' })}</InputLabel>
               <TextField
                 fullWidth
                 id="name"
                 name="name"
-                placeholder="Enter material name"
+                placeholder={intl.formatMessage({ id: 'enter-material-name' })}
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
@@ -102,12 +104,12 @@ const MaterialPage = () => {
           {/* Material Quantity */}
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="quantity">Quantity</InputLabel>
+              <InputLabel htmlFor="quantity">{intl.formatMessage({ id: 'quantity' })}</InputLabel>
               <TextField
                 fullWidth
                 id="quantity"
                 name="quantity"
-                placeholder="Enter material quantity"
+                placeholder={intl.formatMessage({ id: 'enter-material-quantity' })}
                 value={formik.values.quantity}
                 onChange={formik.handleChange}
                 error={formik.touched.quantity && Boolean(formik.errors.quantity)}
@@ -121,12 +123,12 @@ const MaterialPage = () => {
           {/* Material Type */}
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="type">Type</InputLabel>
+              <InputLabel htmlFor="type">{intl.formatMessage({ id: 'type' })}</InputLabel>
               <TextField
                 fullWidth
                 id="type"
                 name="type"
-                placeholder="Enter material type"
+                placeholder={intl.formatMessage({ id: 'enter-type' })}
                 value={formik.values.type}
                 onChange={formik.handleChange}
                 error={formik.touched.type && Boolean(formik.errors.type)}
@@ -138,28 +140,28 @@ const MaterialPage = () => {
           {/* Material Unit */}
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="unit">Unit</InputLabel>
-            <FormControl fullWidth error={formik.touched.unit && Boolean(formik.errors.unit)}>
-              <Select id="unit" name="unit" value={formik.values.unit} onChange={formik.handleChange}>
-                <MenuItem value="кг">кг</MenuItem>
-                <MenuItem value="литр">литр</MenuItem>
-                <MenuItem value="штука">штука</MenuItem>
-                <MenuItem value="метр">метр</MenuItem>
-                <MenuItem value="другое">другое</MenuItem>
-              </Select>
-            </FormControl>
+              <InputLabel htmlFor="unit">{intl.formatMessage({ id: 'unit' })}</InputLabel>
+              <FormControl fullWidth error={formik.touched.unit && Boolean(formik.errors.unit)}>
+                <Select id="unit" name="unit" value={formik.values.unit} onChange={formik.handleChange}>
+                  <MenuItem value="кг">кг</MenuItem>
+                  <MenuItem value="литр">литр</MenuItem>
+                  <MenuItem value="штука">штука</MenuItem>
+                  <MenuItem value="метр">метр</MenuItem>
+                  <MenuItem value="другое">другое</MenuItem>
+                </Select>
+              </FormControl>
               {formik.touched.unit && formik.errors.unit && <FormHelperText error={true}>{String(formik.errors.unit)}</FormHelperText>}
             </Stack>
           </Grid>
 
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="costPerUnit">Cost per Unit</InputLabel>
+              <InputLabel htmlFor="costPerUnit">{intl.formatMessage({ id: 'cost-per-unit' })}</InputLabel>
               <TextField
                 fullWidth
                 id="costPerUnit"
                 name="costPerUnit"
-                placeholder="Enter cost per unit"
+                placeholder={intl.formatMessage({ id: 'enter-cost-per-unit' })}
                 value={formik.values.costPerUnit}
                 onChange={formik.handleChange}
                 error={formik.touched.costPerUnit && Boolean(formik.errors.costPerUnit)}
@@ -173,12 +175,12 @@ const MaterialPage = () => {
           {/* Supplier (Optional) */}
           <Grid item xs={6}>
             <Stack spacing={1}>
-              <InputLabel htmlFor="supplier">Supplier (Optional)</InputLabel>
+              <InputLabel htmlFor="supplier">{intl.formatMessage({ id: 'supplier-optional' })}</InputLabel>
               <FormControl fullWidth error={formik.touched.supplier && Boolean(formik.errors.supplier)}>
                 <Select
                   id="supplier"
                   name="supplier"
-                  placeholder="Select a supplier"
+                  placeholder={intl.formatMessage({ id: 'select-a-supplier' })}
                   value={formik.values.supplier}
                   onChange={formik.handleChange}
                 >
@@ -201,19 +203,20 @@ const MaterialPage = () => {
             <Stack direction="row" justifyContent="space-between">
               {isEditMode ? (
                 <AlertDialog
-                  title="Are you sure you want to delete this material?"
-                  description="Deleting this material is permanent and cannot be undone."
-                  confirmText="Delete"
-                  cancelText="Cancel"
+                  title={intl.formatMessage({ id: 'are-you-sure-you-want-to-delete-this-material' })}
+                  description={intl.formatMessage({ id: 'deleting-this-material-is-permanent-and-cannot-be-undone' })}
+                  confirmText={intl.formatMessage({ id: 'delete' })}
+                  cancelText={intl.formatMessage({ id: 'cancel' })}
                   onConfirm={handleMaterialDelete}
-                  openButtonText="Delete Material"
+                  openButtonText={intl.formatMessage({ id: 'delete-material' })}
                 />
               ) : (
                 ''
               )}
+
               <AnimateButton>
                 <Button variant="contained" type="submit">
-                  {isEditMode ? 'Update Material' : 'Create Material'}
+                  {isEditMode ? intl.formatMessage({ id: 'update-material' }) : intl.formatMessage({ id: 'create-material' })}
                 </Button>
               </AnimateButton>
             </Stack>

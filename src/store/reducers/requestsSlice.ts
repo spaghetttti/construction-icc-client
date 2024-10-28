@@ -6,7 +6,7 @@ export type Request = {
   status: string;
   teamSize: number;
   project: Project;
-  materials: Record<string, number>[];
+  requestMaterials: Record<string, any>[];
 };
 
 export const requestsApi = createApi({

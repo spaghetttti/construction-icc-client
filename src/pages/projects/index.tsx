@@ -19,7 +19,7 @@ const ProjectsPage = () => {
   const { data: projects, error, isLoading } = useGetProjectsQuery();
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading users</p>;
+  if (error) return <p>Error</p>;
 
   return (
     <Page title="">

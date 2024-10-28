@@ -9,7 +9,6 @@ import ScrollX from 'components/ScrollX';
 import { ReactTable } from 'components/ReactTable';
 import { ExportOutlined } from '@ant-design/icons';
 import { Project } from 'store/reducers/projectsSlice';
-import { Material } from 'store/reducers/materialsSlice';
 import AnimateButton from 'components/@extended/AnimateButton';
 // import { CSVExport } from 'components/third-party/ReactTable';
 // import LinearWithLabel from 'components/@extended/progress/LinearWithLabel';
@@ -49,12 +48,15 @@ const RequestsTable = ({ data, striped, title }: { data: []; striped?: boolean; 
       },
       {
         Header: 'Материалы',
-        accessor: 'materials',
-        Cell: ({ value }: { value: Material[] }) => {
+        accessor: 'requestMaterials',
+        Cell: ({ value }: { value: any[] }) => {
+          console.log(value);
           return (
             <>
-              {value?.map((material) => (
-                <>{material.name}, </>
+              {value?.map((materialWithQuantity) => (
+                <>
+                  {materialWithQuantity.material.name}: {materialWithQuantity.quantity} |{' '}
+                </>
               ))}
             </>
           );
